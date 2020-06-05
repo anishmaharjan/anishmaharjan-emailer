@@ -11,6 +11,9 @@
       "runtime": "nodejs12.x",
       "profile": "amplify",
       "region": "ap-southeast-2",
+      "environment": {
+        "SENDGRID_API_KEY": "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"
+      },
       "versionFunctions": true,
       "remoteFunctionData": null,
       "compiledCloudFormationTemplate": {
@@ -165,7 +168,7 @@
                 "S3Bucket": {
                   "Ref": "ServerlessDeploymentBucket"
                 },
-                "S3Key": "serverless/anishmaharjan-emailer/dev/1591350356091-2020-06-05T09:45:56.091Z/anishmaharjan-emailer.zip"
+                "S3Key": "serverless/anishmaharjan-emailer/dev/1591352785099-2020-06-05T10:26:25.099Z/anishmaharjan-emailer.zip"
               },
               "FunctionName": "anishmaharjan-emailer-dev-home",
               "Handler": "handler.home",
@@ -177,21 +180,26 @@
                 ]
               },
               "Runtime": "nodejs12.x",
-              "Timeout": 6
+              "Timeout": 6,
+              "Environment": {
+                "Variables": {
+                  "SENDGRID_API_KEY": "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"
+                }
+              }
             },
             "DependsOn": [
               "HomeLogGroup",
               "IamRoleLambdaExecution"
             ]
           },
-          "HomeLambdaVersionizgImOMUjveK232wl8tpriLBp3w1kspWyR5zcVNopRA": {
+          "HomeLambdaVersionQPrr98jPwQyNUz0d3kYv04TO8xTbOFOjZEJ6Ljc": {
             "Type": "AWS::Lambda::Version",
             "DeletionPolicy": "Retain",
             "Properties": {
               "FunctionName": {
                 "Ref": "HomeLambdaFunction"
               },
-              "CodeSha256": "ce8R5q7e/6T23o0s74FuaL5hykqoc/JkGTMh25/8Zeg="
+              "CodeSha256": "DsAOFbJoxmFDtwcoM1u3YVtZ9UiQUjgO8wG9SbsjX+M="
             }
           },
           "SendMailLambdaFunction": {
@@ -201,7 +209,7 @@
                 "S3Bucket": {
                   "Ref": "ServerlessDeploymentBucket"
                 },
-                "S3Key": "serverless/anishmaharjan-emailer/dev/1591350356091-2020-06-05T09:45:56.091Z/anishmaharjan-emailer.zip"
+                "S3Key": "serverless/anishmaharjan-emailer/dev/1591352785099-2020-06-05T10:26:25.099Z/anishmaharjan-emailer.zip"
               },
               "FunctionName": "anishmaharjan-emailer-dev-sendMail",
               "Handler": "handler.sendMail",
@@ -213,21 +221,26 @@
                 ]
               },
               "Runtime": "nodejs12.x",
-              "Timeout": 6
+              "Timeout": 6,
+              "Environment": {
+                "Variables": {
+                  "SENDGRID_API_KEY": "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"
+                }
+              }
             },
             "DependsOn": [
               "SendMailLogGroup",
               "IamRoleLambdaExecution"
             ]
           },
-          "SendMailLambdaVersion5G5Hiwu3DfQhm2QhuJuTK50IZtm8zh0RHr3E7RmYhY": {
+          "SendMailLambdaVersionwSMt2MMenRcTDW4aK6G6ftDlCsQLUsK8pVC5Wkf1I6I": {
             "Type": "AWS::Lambda::Version",
             "DeletionPolicy": "Retain",
             "Properties": {
               "FunctionName": {
                 "Ref": "SendMailLambdaFunction"
               },
-              "CodeSha256": "ce8R5q7e/6T23o0s74FuaL5hykqoc/JkGTMh25/8Zeg="
+              "CodeSha256": "DsAOFbJoxmFDtwcoM1u3YVtZ9UiQUjgO8wG9SbsjX+M="
             }
           },
           "ApiGatewayRestApi": {
@@ -346,7 +359,7 @@
               "MethodResponses": []
             }
           },
-          "ApiGatewayDeployment1591350348918": {
+          "ApiGatewayDeployment1591352774658": {
             "Type": "AWS::ApiGateway::Deployment",
             "Properties": {
               "RestApiId": {
@@ -443,13 +456,13 @@
           "HomeLambdaFunctionQualifiedArn": {
             "Description": "Current Lambda function version",
             "Value": {
-              "Ref": "HomeLambdaVersionizgImOMUjveK232wl8tpriLBp3w1kspWyR5zcVNopRA"
+              "Ref": "HomeLambdaVersionQPrr98jPwQyNUz0d3kYv04TO8xTbOFOjZEJ6Ljc"
             }
           },
           "SendMailLambdaFunctionQualifiedArn": {
             "Description": "Current Lambda function version",
             "Value": {
-              "Ref": "SendMailLambdaVersion5G5Hiwu3DfQhm2QhuJuTK50IZtm8zh0RHr3E7RmYhY"
+              "Ref": "SendMailLambdaVersionwSMt2MMenRcTDW4aK6G6ftDlCsQLUsK8pVC5Wkf1I6I"
             }
           },
           "ServiceEndpoint": {
@@ -546,6 +559,9 @@
       },
       "vpc": {}
     },
+    "plugins": [
+      "serverless-offline"
+    ],
     "pluginsData": {},
     "functions": {
       "home": {
@@ -565,7 +581,7 @@
         "timeout": 6,
         "runtime": "nodejs12.x",
         "vpc": {},
-        "versionLogicalId": "HomeLambdaVersionizgImOMUjveK232wl8tpriLBp3w1kspWyR5zcVNopRA"
+        "versionLogicalId": "HomeLambdaVersionQPrr98jPwQyNUz0d3kYv04TO8xTbOFOjZEJ6Ljc"
       },
       "sendMail": {
         "handler": "handler.sendMail",
@@ -584,7 +600,7 @@
         "timeout": 6,
         "runtime": "nodejs12.x",
         "vpc": {},
-        "versionLogicalId": "SendMailLambdaVersion5G5Hiwu3DfQhm2QhuJuTK50IZtm8zh0RHr3E7RmYhY"
+        "versionLogicalId": "SendMailLambdaVersionwSMt2MMenRcTDW4aK6G6ftDlCsQLUsK8pVC5Wkf1I6I"
       }
     },
     "serviceFilename": "serverless.yml",
@@ -593,7 +609,7 @@
     "artifact": "/Users/anishmaharjan/porkspace/anishmaharjan-emailer/.serverless/anishmaharjan-emailer.zip"
   },
   "package": {
-    "artifactDirectoryName": "serverless/anishmaharjan-emailer/dev/1591350356091-2020-06-05T09:45:56.091Z",
+    "artifactDirectoryName": "serverless/anishmaharjan-emailer/dev/1591352785099-2020-06-05T10:26:25.099Z",
     "artifact": "anishmaharjan-emailer.zip"
   }
 }

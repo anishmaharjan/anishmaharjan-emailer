@@ -12,12 +12,12 @@ module.exports.home = async event => {
   return {
     statusCode: 200,
     body: JSON.stringify(
-      {
-        message: 'Go Serverless v1.0! Your function executed successfully!',
-        input: event,
-      },
-      null,
-      2
+        {
+          message: 'Go Serverless v1.0! Your function executed successfully!',
+          input: event,
+        },
+        null,
+        2,
     ),
   };
 
@@ -26,13 +26,12 @@ module.exports.home = async event => {
 };
 
 module.exports.sendMail = async event => {
-  // https://github.com/sendgrid/sendgrid-nodejs
-
   const sgMail = require('@sendgrid/mail');
   sgMail.setApiKey(process.env.SENDGRID_API_KEY);
+
   const msg = {
     to: 'gara.knoe@gmail.com',
-    from: 'anish@anishmaharjan.com',
+    from: 'gara.knoe@gmail.com',
     subject: 'Sending with Twilio SendGrid is Fun',
     text: 'and easy to do anywhere, even with Node.js',
     html: '<strong>and easy to do anywhere, even with Node.js</strong>',
@@ -46,8 +45,12 @@ module.exports.sendMail = async event => {
           input: event,
         },
         null,
-        2
+        2,
     ),
+  })).catch(e => ({
+    statusCode: 200,
+    'error': e,
+    env: process.env.SENDGRID_API_KEY
   }));
 
   // Use this code if you don't use the http event with the LAMBDA-PROXY integration

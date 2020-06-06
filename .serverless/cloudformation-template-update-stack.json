@@ -150,7 +150,7 @@
           "S3Bucket": {
             "Ref": "ServerlessDeploymentBucket"
           },
-          "S3Key": "serverless/anishmaharjan-emailer/dev/1591352785099-2020-06-05T10:26:25.099Z/anishmaharjan-emailer.zip"
+          "S3Key": "serverless/anishmaharjan-emailer/dev/1591421561340-2020-06-06T05:32:41.340Z/anishmaharjan-emailer.zip"
         },
         "FunctionName": "anishmaharjan-emailer-dev-home",
         "Handler": "handler.home",
@@ -165,7 +165,9 @@
         "Timeout": 6,
         "Environment": {
           "Variables": {
-            "SENDGRID_API_KEY": "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"
+            "SENDGRID_API_KEY": "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",
+            "EMAIL": "limarket99@gmail.com",
+            "PASSWORD": "anish123!"
           }
         }
       },
@@ -174,14 +176,14 @@
         "IamRoleLambdaExecution"
       ]
     },
-    "HomeLambdaVersionQPrr98jPwQyNUz0d3kYv04TO8xTbOFOjZEJ6Ljc": {
+    "HomeLambdaVersion8uI95Qe7t1qTUTXZglko3s9kgYNrxFVYddtAD97V4": {
       "Type": "AWS::Lambda::Version",
       "DeletionPolicy": "Retain",
       "Properties": {
         "FunctionName": {
           "Ref": "HomeLambdaFunction"
         },
-        "CodeSha256": "DsAOFbJoxmFDtwcoM1u3YVtZ9UiQUjgO8wG9SbsjX+M="
+        "CodeSha256": "z7A4poriWYpj89EhL3VvIR1huybI5bP+/6/XiWxEBkE="
       }
     },
     "SendMailLambdaFunction": {
@@ -191,7 +193,7 @@
           "S3Bucket": {
             "Ref": "ServerlessDeploymentBucket"
           },
-          "S3Key": "serverless/anishmaharjan-emailer/dev/1591352785099-2020-06-05T10:26:25.099Z/anishmaharjan-emailer.zip"
+          "S3Key": "serverless/anishmaharjan-emailer/dev/1591421561340-2020-06-06T05:32:41.340Z/anishmaharjan-emailer.zip"
         },
         "FunctionName": "anishmaharjan-emailer-dev-sendMail",
         "Handler": "handler.sendMail",
@@ -206,7 +208,9 @@
         "Timeout": 6,
         "Environment": {
           "Variables": {
-            "SENDGRID_API_KEY": "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"
+            "SENDGRID_API_KEY": "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",
+            "EMAIL": "limarket99@gmail.com",
+            "PASSWORD": "anish123!"
           }
         }
       },
@@ -215,14 +219,14 @@
         "IamRoleLambdaExecution"
       ]
     },
-    "SendMailLambdaVersionwSMt2MMenRcTDW4aK6G6ftDlCsQLUsK8pVC5Wkf1I6I": {
+    "SendMailLambdaVersionqmQek6k04tDfU97e0ZoXEODhSVnm34JVLqN5n3ft4": {
       "Type": "AWS::Lambda::Version",
       "DeletionPolicy": "Retain",
       "Properties": {
         "FunctionName": {
           "Ref": "SendMailLambdaFunction"
         },
-        "CodeSha256": "DsAOFbJoxmFDtwcoM1u3YVtZ9UiQUjgO8wG9SbsjX+M="
+        "CodeSha256": "z7A4poriWYpj89EhL3VvIR1huybI5bP+/6/XiWxEBkE="
       }
     },
     "ApiGatewayRestApi": {
@@ -341,7 +345,7 @@
         "MethodResponses": []
       }
     },
-    "ApiGatewayDeployment1591352774658": {
+    "ApiGatewayDeployment1591421541040": {
       "Type": "AWS::ApiGateway::Deployment",
       "Properties": {
         "RestApiId": {
@@ -438,13 +442,13 @@
     "HomeLambdaFunctionQualifiedArn": {
       "Description": "Current Lambda function version",
       "Value": {
-        "Ref": "HomeLambdaVersionQPrr98jPwQyNUz0d3kYv04TO8xTbOFOjZEJ6Ljc"
+        "Ref": "HomeLambdaVersion8uI95Qe7t1qTUTXZglko3s9kgYNrxFVYddtAD97V4"
       }
     },
     "SendMailLambdaFunctionQualifiedArn": {
       "Description": "Current Lambda function version",
       "Value": {
-        "Ref": "SendMailLambdaVersionwSMt2MMenRcTDW4aK6G6ftDlCsQLUsK8pVC5Wkf1I6I"
+        "Ref": "SendMailLambdaVersionqmQek6k04tDfU97e0ZoXEODhSVnm34JVLqN5n3ft4"
       }
     },
     "ServiceEndpoint": {

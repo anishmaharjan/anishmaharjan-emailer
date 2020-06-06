@@ -30,8 +30,8 @@ provider:
     EMAIL: ${file(./serverless.env.yml):dev.EMAIL}
     PASSWORD: ${file(./serverless.env.yml):dev.PASSWORD}
 
-plugins:
-  - serverless-offline
+#plugins:
+#  - serverless-offline
 # you can overwrite defaults here
 #  stage: dev
 #  region: us-east-1

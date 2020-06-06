@@ -27,6 +27,8 @@ provider:
   region: ap-southeast-2
   environment:
     SENDGRID_API_KEY: ${file(./serverless.env.yml):dev.SENDGRID_API_KEY}
+    EMAIL: ${file(./serverless.env.yml):dev.EMAIL}
+    PASSWORD: ${file(./serverless.env.yml):dev.PASSWORD}
 
 plugins:
   - serverless-offline

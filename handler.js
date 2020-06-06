@@ -26,33 +26,33 @@ module.exports.home = async event => {
 };
 
 module.exports.sendMail = async event => {
-  const sgMail = require('@sendgrid/mail');
-  sgMail.setApiKey(process.env.SENDGRID_API_KEY);
+  const nodemailer = require('nodemailer');
 
-  const msg = {
-    to: 'gara.knoe@gmail.com',
-    from: 'gara.knoe@gmail.com',
-    subject: 'Sending with Twilio SendGrid is Fun',
-    text: 'and easy to do anywhere, even with Node.js',
-    html: '<strong>and easy to do anywhere, even with Node.js</strong>',
-  };
-  sgMail.send(msg).then(r => ({
-    statusCode: 200,
-    body: JSON.stringify(
-        {
-          message: 'Send mail',
-          response: r,
-          input: event,
-        },
-        null,
-        2,
-    ),
-  })).catch(e => ({
-    statusCode: 200,
-    'error': e,
-    env: process.env.SENDGRID_API_KEY
-  }));
+  let transporter = nodemailer.createTransport({
+    service: 'gmail',
+    auth: {
+      user: process.env.EMAIL,
+      pass: process.env.PASSWORD,
+    },
+  });
 
-  // Use this code if you don't use the http event with the LAMBDA-PROXY integration
-  // return { message: 'Go Serverless v1.0! Your function executed successfully!', event };
+  const body = JSON.parse(event.body);
+  const {to, subject, content} = body;
+
+  let info = await transporter.sendMail({
+    from: 'Little India Groceries <limarket99@gmail.com>',
+    to: to,
+    subject: subject,
+    text: content.text,
+    // html: '<b>Hello world?</b>'
+  }, (er, d) => {
+    return (er) ? {
+      statusCode: 500,
+    }: {
+      statusCode: 200,
+    }
+  });
+
+  return {};
+
 };

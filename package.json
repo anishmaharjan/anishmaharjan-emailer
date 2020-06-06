@@ -1,13 +1,11 @@
 {
   "scripts": {
-    "deploy": "serverless deploy",
+    "deploy": "sls deploy",
     "offline": "sls offline start"
   },
   "dependencies": {
     "@sendgrid/mail": "^7.1.1",
-    "nodemailer": "^6.4.8"
-  },
-  "devDependencies": {
+    "nodemailer": "^6.4.8",
     "serverless-offline": "^6.4.0"
   }
 }
